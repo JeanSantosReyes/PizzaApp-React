@@ -1,0 +1,22 @@
+.portada {
+    position: relative;
+    height: 90vh;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portada::before {
+    content: "";
+    background-image: url('/public/assets/logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.75;
+}
