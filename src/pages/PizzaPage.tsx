@@ -25,14 +25,14 @@ export const PizzaPage = () => {
                 </div>
                 <div className="col-md-8">
                     <div className="card-body">
-                        <h5 className="fs-1">{pizza?.name.toUpperCase()}</h5>
+                        <h5 className="fs-1">{pizza?.name!.toUpperCase()}</h5>
                         <p className="card-text">{pizza?.desc}</p>
                         <p className="card-text">
                             <small className="text-muted">
-                                {pizza?.ingredients.map((ingredient, index) => (
+                                {pizza?.ingredients!.map((ingredient, index) => (
                                     <span key={ingredient}>
                                         {ingredient}
-                                        {pizza.ingredients.length !== index + 1 && ", "}
+                                        {pizza.ingredients!.length !== index + 1 && ", "}
                                     </span>
                                 ))}
                             </small>

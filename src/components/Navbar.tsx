@@ -27,6 +27,7 @@ export const Navbar = () => {
                         className='btn btn-outline-info me-2'
                         to='/cart'
                     >
+                        Cart
                         Cart: ${formatPrice(totalCart())}
                     </Link>
                 </div>

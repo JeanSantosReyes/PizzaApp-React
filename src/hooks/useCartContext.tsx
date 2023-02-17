@@ -12,6 +12,6 @@ export const useCartContext = () => {
         totalCart,
         findItemCount,
         // Properties
-        cart
+        cart,
     }
 }

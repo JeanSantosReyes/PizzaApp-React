@@ -1,5 +1,8 @@
-# Pizza App
+# Pizza App - Context with Reducer
+
 <!-- Proyecto extraido de: https://github.com/bluuweb/template-basico-prueba-react-II -->
+
+[DEPLOY PROJECT PIZZA APP](https://pizza-app-santosjeandx.netlify.app)
 
 ## Dependencias instaladas
 * React Router Dom - Rutas

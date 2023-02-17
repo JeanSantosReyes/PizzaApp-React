@@ -3,7 +3,6 @@ import { useCartContext } from '../hooks/useCartContext';
 import { formatPrice } from "../utils/formatPrice";
 import { useNavigate } from "react-router-dom";
 
-
 interface Props {
     item: Pizza
 }
@@ -29,8 +28,8 @@ export const CardItem = ({ item }: Props) => {
                         width="100"
                     />
                     <div onClick={navegar} role="button">
-                        <h5 className="mb-0" >{item.name.toUpperCase()}</h5>
-                        <small className="text-muted">${formatPrice(item.price)}</small>
+                        <h5 className="mb-0" >{item.name!.toUpperCase()}</h5>
+                        <small className="text-muted">${formatPrice(item.price!)}</small>
                     </div>
                 </div>
                 <div className="d-flex gap-1">
@@ -41,7 +40,7 @@ export const CardItem = ({ item }: Props) => {
                         -
                     </button>
                     <button className="btn btn-outline-dark btn-sm disabled">
-                        {findItemCount(item.id)}
+                        {findItemCount(item.id!)}
                     </button>
                     <button
                         className="btn btn-outline-primary btn-sm"

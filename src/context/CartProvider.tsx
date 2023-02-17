@@ -1,7 +1,11 @@
-import { Notyf } from "notyf";
-import { useState } from "react";
-import { Pizza } from "../interfaces/PizzaInterface";
+import { useReducer } from 'react';
+
+import { Pizza } from '../interfaces/PizzaInterface';
+
 import { CartContext as Context } from "./CartContext";
+import { CartReducer as Reducer } from "./CartReducer";
+
+const INITIAL_STATE: Pizza[] = []
 
 interface Props {
     children: JSX.Element | JSX.Element[]
@@ -9,42 +13,18 @@ interface Props {
 
 export const CartProvider = ({ children }: Props) => {
 
-    const notyf = new Notyf();
+    const [cart, dispatch] = useReducer(Reducer, INITIAL_STATE)
 
-    const [cart, setCart] = useState<Pizza[]>([])
+    const addItem = (item: Pizza) => dispatch({ type: 'ADD_ITEM', payload: item });
 
-    const addItem = (item: Pizza) => {
-        const itemExists = cart.find((i) => i.id === item.id);
-        if (itemExists) {
-            setCart(
-                cart.map((i) => (i.id === item.id ? { ...i, count: i.count + 1 } : i))
-            );
-            notyf.success(`Su orden de Pizza ${item.name} se ha actualizado`);
-        } else {
-            setCart([...cart, { ...item, count: 1 }]);
-            notyf.success(`Pizza ${item.name} se ha agregado al carrito`);
-        }
-    };
-
-    const removeItem = (item: Pizza) => {
-        const itemExists = cart.find((i) => i.id === item.id);
-        if (itemExists!.count === 1) {
-            setCart(cart.filter((i) => i.id !== item.id));
-            notyf.error(`Pizza ${item.name} se ha eliminado al carrito`);
-        } else {
-            notyf.success({ message: `Su orden de Pizza ${item.name} se ha actualizado`, background: 'orange' });
-            setCart(
-                cart.map((i) => (i.id === item.id ? { ...i, count: i.count! - 1 } : i))
-            );
-        }
-    };
-
-    const totalCart = () => cart.reduce((acc, item) => acc + item.price * item.count, 0);
+    const removeItem = (item: Pizza) => dispatch({ type: 'REMOVE_ITEM', payload: item });
 
     const findItemCount = (id: string) => {
-        const item = cart.find((i) => i.id === id);
-        return item ? item.count : 0;
-    };
+        const item = cart.find(i => i.id === id);
+        return item ? item.count! : 0;
+    }
+
+    const totalCart = () => cart.reduce((acc, { price, count }) => acc + price! * count!, 0)
 
     return (
         <Context.Provider

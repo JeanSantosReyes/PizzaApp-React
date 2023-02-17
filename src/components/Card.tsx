@@ -23,16 +23,16 @@ export const Card = ({ pizza }: Props) => {
                 />
                 <div className="card-body">
                     <h5 className="text-center">
-                        <b>{name.toUpperCase()}</b>
+                        <b>{name!.toUpperCase()}</b>
                     </h5>
                     <h6>Ingrediente</h6>
                     <ul>
-                        {ingredients.map((ingredient) => (
+                        {ingredients!.map((ingredient) => (
                             <li key={ingredient}>{ingredient}</li>
                         ))}
                     </ul>
                     <h5>
-                        <b>Precio: ${formatPrice(price)}</b>
+                        <b>Precio: ${formatPrice(price!)}</b>
                     </h5>
                     <div className="d-flex gap-2">
                         <Link
