@@ -1,4 +1,4 @@
-# Pizza App
+# Pizza App - Context with Functions
 
 <!-- Proyecto extraido de: https://github.com/bluuweb/template-basico-prueba-react-II -->
 
